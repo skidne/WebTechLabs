@@ -4,7 +4,7 @@
 
 #### Website theme:
 
-The chosen theme for this website is an online **battle** or **war** between artists.
+The chosen theme for this website is an online *battle* or *war* between artists.
 
 Basically, it's (going to be) a canvas where 2 users can compete against each other using their art skills.
 
