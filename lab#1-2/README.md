@@ -1,4 +1,4 @@
-# Laboratory No.1-2
+# Laboratory Work No.1-2
 
 ### Goal: Familiarization with Bootstrap and ASP.NET integration
 
