@@ -17,8 +17,7 @@ Details like who wins/loses will be based on ratings from other users, who can w
 1. By default, the usage of Bootstrap makes the pages responsive
 1. The overall look (pallette) of the website (using the Darkly theme for Bootstrap)
 1. The navbar and footer (with clickable buttons, that redirect to other pages, most of them WIPs)
-1. The usage of ASP.NET's layouts (only the main content is changed across pages)
-1. ASP.NET's bundling and minification (which improves the first page request load time)
+1. Usage of a layout
 
 ----
 
