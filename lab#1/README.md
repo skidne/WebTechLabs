@@ -1,6 +1,6 @@
-# Laboratory Work No.1-2
+# Laboratory Work No.1
 
-### Goal: Familiarization with Bootstrap and ASP.NET integration
+### Goal: Familiarization with Bootstrap
 
 #### Website theme:
 
