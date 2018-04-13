@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ArtWars",
+    "\\ArtWars\\artWars.Domain\\Entities",
+    "\\ArtWars\\artWars.Domain\\Entities\\User",
+    "\\ArtWars\\artWars.Web",
+    "\\ArtWars\\artWars.Web\\App_Data",
+    "\\ArtWars\\artWars.Web\\App_Start",
+    "\\ArtWars\\artWars.Web\\bin",
+    "\\ArtWars\\artWars.Web\\Properties"
+  ],
+  "SelectedNode": "\\ArtWars\\artWars.Web\\bin\\artWars.Web.dll",
+  "PreviewInSolutionExplorer": false
+}

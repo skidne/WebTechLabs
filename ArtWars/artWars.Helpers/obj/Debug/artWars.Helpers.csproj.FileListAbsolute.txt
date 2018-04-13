@@ -1,0 +1,6 @@
+C:\Users\skdn\Desktop\UTM\Anul 2, sem. 2\WebDev\WebTechLabs\ArtWars\artWars.Helpers\bin\Debug\artWars.Helpers.dll
+C:\Users\skdn\Desktop\UTM\Anul 2, sem. 2\WebDev\WebTechLabs\ArtWars\artWars.Helpers\bin\Debug\artWars.Helpers.pdb
+C:\Users\skdn\Desktop\UTM\Anul 2, sem. 2\WebDev\WebTechLabs\ArtWars\artWars.Helpers\obj\Debug\artWars.Helpers.csprojResolveAssemblyReference.cache
+C:\Users\skdn\Desktop\UTM\Anul 2, sem. 2\WebDev\WebTechLabs\ArtWars\artWars.Helpers\obj\Debug\artWars.Helpers.csproj.CoreCompileInputs.cache
+C:\Users\skdn\Desktop\UTM\Anul 2, sem. 2\WebDev\WebTechLabs\ArtWars\artWars.Helpers\obj\Debug\artWars.Helpers.dll
+C:\Users\skdn\Desktop\UTM\Anul 2, sem. 2\WebDev\WebTechLabs\ArtWars\artWars.Helpers\obj\Debug\artWars.Helpers.pdb

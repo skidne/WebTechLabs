@@ -1,0 +1,33 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>artWars | @ViewBag.Title</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet" type="text/css">
+	@Styles.Render("~/bundles/bootstrap/css")
+	@Styles.Render("~/bundles/font-awesome/css")
+	@Styles.Render("~/bundles/animate/css")
+
+	@if (IsSectionDefined("Styles"))
+	{@RenderSection("Styles", required: false)}
+</head>
+
+<body>
+	<div class="wrapper">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+			@Html.Partial("_Header")
+		</nav>
+
+		<section class="body-content">
+			@RenderBody()
+		</section>
+
+		@Scripts.Render("~/bundles/jquery/js")
+		@Scripts.Render("~/bundles/bootstrap/js")
+	</div>
+</body>
+</html>

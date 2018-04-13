@@ -1,0 +1,39 @@
+﻿@{ 
+    ViewData["Title"] = "Home";
+	@model artWars.Web.Models.UserData
+}
+
+<div class="container navbar-fixed-bottom">
+    <div class="jumbotron text-center bg-primary">
+        <h1 class="display-3">Welcome to ArtWars</h1>
+        <br /><br />
+        <p class="lead">Where your pen is your weapon.</p>
+        <p class="lead">And the canvas is your battlefield.</p>
+        <br/>
+        <p class="lead">
+            <a class="btn btn-dark btn-outline-warning btn-lg" href="#" role="button">START A WAR</a>
+        </p>
+    </div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="table">
+				<table class="table table-bordered">
+					<thead>
+						<tr>Wars</tr>
+					</thead>
+					<tbody>
+						@using (Html.BeginForm("War", "Home", FormMethod.Post, new { autocomplete = "off" }))
+						{
+							foreach (var war in Model.Wars)
+							{
+								<tr><td>
+									<button class="btn btn-primary" name="btn" type="submit" value="@war">@war</button>
+								</td></tr>
+							}
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
