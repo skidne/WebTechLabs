@@ -2,14 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\ArtWars",
-    "\\ArtWars\\artWars.Domain\\Entities",
-    "\\ArtWars\\artWars.Domain\\Entities\\User",
     "\\ArtWars\\artWars.Web",
     "\\ArtWars\\artWars.Web\\App_Data",
-    "\\ArtWars\\artWars.Web\\App_Start",
-    "\\ArtWars\\artWars.Web\\bin",
-    "\\ArtWars\\artWars.Web\\Properties"
+    "\\ArtWars\\artWars.Web\\Properties",
+    "\\ArtWars\\artWars.Web\\Views",
+    "\\ArtWars\\artWars.Web\\Views\\Login"
   ],
-  "SelectedNode": "\\ArtWars\\artWars.Web\\bin\\artWars.Web.dll",
+  "SelectedNode": "\\ArtWars\\artWars.Web\\Views\\Login\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }

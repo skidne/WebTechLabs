@@ -1,0 +1,95 @@
+﻿@{
+	Layout = "~/Views/Shared/_Layout_Blank.cshtml";
+	ViewBag.Title = "Sign Up";
+}
+
+@using System.Web.Optimization
+@model artWars.Web.Models.UserRegistration
+
+<div class="container-fluid animated slideInDown col-lg-4 p-5">
+	<div class="view-header text-center">
+		<div class="header-icon">
+			<i class="pe page-header-icon pe-7s-unlock"></i>
+		</div>
+		<div class="header-title">
+			<h3>Sign Up</h3>
+		</div>
+	</div>
+
+	<div class="panel panel-filled text-center">
+		<div class="panel-body">
+			@Html.ValidationSummary(true)
+			@using (Html.BeginForm("Register", "Login", FormMethod.Post, new { @id = "RegisterForm" }))
+			{
+				@Html.AntiForgeryToken()
+				<div class="form-group">
+					@Html.LabelFor(m => m.Username, new { @class = "control-label" })
+					@Html.TextBoxFor(m => m.Username, new
+					{
+						value = "",
+						name = "username",
+						id = "username",
+						@class = "form-control"
+					})
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(m => m.Password, new { @class = "control-label" })
+					@Html.TextBoxFor(m => m.Password, new
+					{
+						@class = "form-control",
+						type = "password",
+						name = "password",
+						id = "password"
+					})
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(m => m.Email, new { @class = "control-label" })
+					@Html.TextBoxFor(m => m.Email, new
+					{
+						@class = "form-control",
+						type = "email",
+						name = "email",
+						id = "email"
+					})
+				</div>
+				<div>
+					<button class="btn btn-dark">Sign Up</button>
+				</div>
+			}
+		</div>
+	</div>
+
+</div>
+
+@section Scripts {
+	<script type="text/javascript">
+		$(function () {
+
+			$("#RegisterForm").validate({
+				rules: {
+					Username: {
+						required: true
+					},
+					Password: {
+						required: true
+					},
+					Email: {
+						required: true
+					}
+				},
+				submitHandler: function (form) {
+					form.submit();
+				},
+				errorPlacement: function (error, element) {
+					$(element)
+						.closest("form")
+						.find("label[for='" + element.attr("id") + "']")
+						.append(error);
+				},
+				errorElement: "span"
+			});
+		});
+
+
+	</script>
+}

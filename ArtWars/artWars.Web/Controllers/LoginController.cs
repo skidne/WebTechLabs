@@ -7,6 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using artWars.BusinessLogic.DBModel;
+using artWars.BusinessLogic.Repositories;
+using artWars.Domain.Enums;
+using artWars.Helpers;
 
 namespace artWars.Web.Controllers
 {
@@ -31,7 +35,6 @@ namespace artWars.Web.Controllers
         {
 			if (ModelState.IsValid)
 			{
-				Mapper.Initialize(cfg => cfg.CreateMap<UserLogin, ULoginData>());
 				var data = Mapper.Map<ULoginData>(user);
 
 				data.LoginDateTime = DateTime.Now;
@@ -50,7 +53,35 @@ namespace artWars.Web.Controllers
 					return View();
 				}
 			}
-            return View();
-        }
-    }
+			return View();
+		}
+
+		[HttpGet]
+		public ActionResult Register()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Register(UserRegistration user)
+		{
+			if (ModelState.IsValid)
+			{
+				//Mapper.Initialize(cfg => cfg.CreateMap<UserLogin, ULoginData>());
+				using (var context = new UserContext())
+				{
+					if (context.Users.FirstOrDefault(u => u.Username == user.Username) != null)
+						return View();
+					UDBTable newUser = new UDBTable() { Username = user.Username,
+						Password = LoginHelper.HashGen(user.Password), LastLogin = DateTime.UtcNow,
+						Email =user.Email, Role=URole.User};
+					context.Users.Add(newUser);
+					context.SaveChanges();
+					return RedirectToAction("Index", "Login");
+				}
+			}
+			return View();
+		}
+	}
 }

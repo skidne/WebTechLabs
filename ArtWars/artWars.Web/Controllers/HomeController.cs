@@ -23,7 +23,7 @@ namespace artWars.Web.Controllers
 				Wars = new List<string> { "Cold War", "Hot War", "Shit War" }
 			};
 
-			return View();
+			return View(u);
 		}
 
 		public ActionResult Battles()

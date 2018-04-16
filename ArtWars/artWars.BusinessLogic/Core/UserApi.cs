@@ -119,7 +119,6 @@ namespace artWars.BusinessLogic.Core
 			if (curentUser == null)
 				return null;
 
-			Mapper.Initialize(cfg => cfg.CreateMap<UDBTable, UserMinimal>());
 			var userminimal = Mapper.Map<UserMinimal>(curentUser);
 
 			return userminimal;
