@@ -9,3 +9,7 @@ Laboratory Works for Web Technologies course
 2. [Lab No.2](https://github.com/skidne/WebTechLabs/tree/master/lab%232)
    
    __DL__ 12.03.2018
+
+3. [Lab No.3](https://github.com/skidne/WebTechLabs/tree/master/lab%233)
+
+   __DL__ 16.04.2018
