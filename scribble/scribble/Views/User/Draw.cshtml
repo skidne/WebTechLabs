@@ -1,0 +1,178 @@
+﻿@{
+	ViewBag.Title = "Draw";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model scribble.ViewModels.DrawingViewModel
+
+<div class="pt-4">
+	<canvas class="bg-white d-inline" id="can"></canvas>
+
+	<div id="toolbarRight" class="d-inline bg-secondary position-absolute text-center p-3">
+		<p id="color" class="text-info">Color: #000000</p>
+		<input disabled class="border-secondary jscolor {valueElement: null, value: '000000', onFineChange:'update(this)'}"
+			   style="width: 50px; height: 50px;" />
+		<p id="sizeOutput" class="pt-3 text-info"></p>
+		<input type="range" min="1" max="30" value="3" />
+		<p class="pt-5" />
+		<button class="btn btn-danger" onclick="erase()">Clear</button>
+		<p class="pt-3" />
+		<button class="btn btn-primary" data-toggle="modal" data-target="#saveModal">Post</button>
+
+		<div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Post this drawing</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					@using (Html.BeginForm("SaveShitDrawing", "User", FormMethod.Post))
+					{
+						<div class="modal-body form-group">
+							@Html.HiddenFor(m => m.DrawingBytes)
+							@Html.LabelFor(m => m.Title)<br />
+							@Html.TextBoxFor(m => m.Title, new { style = "width: 20em" }) <hr />
+							@Html.LabelFor(m => m.Description)<br />
+							@Html.TextAreaFor(m => m.Description, new { cols = "100", rows = "5" })
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">Save</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts
+{
+	<script type="text/javascript">
+
+		var canvas, ctx,
+			flag = false,
+			prevX = 0,
+			currX = 0,
+			prevY = 0,
+			currY = 0,
+			dot_flag = false,
+			x = "black",
+			y = 2,
+			rightToolbar,
+			leftToolbar,
+			size;
+
+		init();
+
+		$('input[type="range"]').rangeslider({
+			polyfill: false,
+
+			rangeClass: 'rangeslider',
+			disabledClass: 'rangeslider--disabled',
+			horizontalClass: 'rangeslider--horizontal',
+			verticalClass: 'rangeslider--vertical',
+			fillClass: 'rangeslider__fill',
+			handleClass: 'rangeslider__handle',
+
+			onInit: function () {
+				this.output = $('p#sizeOutput').text("Size: " + this.$element.val());
+				size = this.$element.val;
+			},
+
+			onSlide: function (position, value) {
+				this.output.text("Size: " + value);
+				size = value;
+			}
+		});
+
+		function init() {
+			canvas = document.getElementById('can');
+			ctx = canvas.getContext("2d");
+			rightToolbar = document.getElementById('toolbarRight');
+			leftToolbar = document.getElementById('toolbarLeft');
+
+			window.addEventListener('resize', resizeCanvas, false);
+
+			canvas.addEventListener("mousemove", function (e) {
+				findxy('move', e)
+			}, false);
+
+			canvas.addEventListener("mousedown", function (e) {
+				findxy('down', e)
+			}, false);
+
+			canvas.addEventListener("mouseup", function (e) {
+				findxy('up', e)
+			}, false);
+
+			canvas.addEventListener("mouseout", function (e) {
+				findxy('out', e)
+			}, false);
+
+			resizeCanvas();
+		}
+
+		function resizeCanvas() {
+			canvas.width = window.innerWidth / 1.5;
+			canvas.height = window.innerHeight / 1.5;
+			rightToolbar.style.height = canvas.height + 'px';
+			rightToolbar.style.width = "10%";
+		}
+
+		function update(color) {
+			x = '#' + color;
+			$('p#color').text('Color: #' + color);
+		}
+
+		function draw() {
+			ctx.beginPath();
+			ctx.moveTo(prevX, prevY);
+			ctx.lineTo(currX, currY);
+			ctx.strokeStyle = x;
+			ctx.lineWidth = size;
+			ctx.stroke();
+			ctx.closePath();
+			$("#DrawingBytes").val(canvas.toDataURL("image/png"));
+		}
+
+		function erase() {
+			var m = confirm("Want to clear");
+			if (m) {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+			}
+		}
+
+		function findxy(res, e) {
+			if (res == 'down') {
+				prevX = currX;
+				prevY = currY;
+				currX = e.clientX - canvas.offsetLeft;
+				currY = e.clientY - canvas.offsetTop;
+
+				flag = true;
+				dot_flag = true;
+				if (dot_flag) {
+					ctx.beginPath();
+					ctx.fillStyle = x;
+					ctx.fillRect(currX, currY, size, size);
+					ctx.closePath();
+					dot_flag = false;
+				}
+			}
+			if (res == 'up' || res == "out") {
+				flag = false;
+			}
+			if (res == 'move') {
+				if (flag) {
+					prevX = currX;
+					prevY = currY;
+					currX = e.clientX - canvas.offsetLeft;
+					currY = e.clientY - canvas.offsetTop;
+					draw();
+				}
+			}
+		}
+	</script>
+}

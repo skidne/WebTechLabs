@@ -1,0 +1,30 @@
+﻿@{
+	ViewBag.Title = "Sign Up";
+}
+
+@model scribble.ViewModels.RegisterModel
+
+@Html.ValidationSummary(true)
+
+<div class="row">
+	<div class="col-lg-4 offset-lg-4 p-lg-5">
+		@using (Html.BeginForm("Register", "Auth", FormMethod.Post))
+		{
+		<div class="form-group">
+			@Html.LabelFor(u => u.Email)<br />
+			@Html.TextBoxFor(u => u.Email, new { @class = "form-control form-control-lg" })<br />
+			@Html.ValidationMessageFor(u => u.Email)<br />
+			@Html.LabelFor(u => u.Password)<br />
+			@Html.PasswordFor(u => u.Password, new { @class = "form-control form-control-lg" })<br />
+			@Html.LabelFor(u => u.Username)<br />
+			@Html.TextBoxFor(u => u.Username, new { @class = "form-control form-control-lg" })<br />
+			@Html.ValidationMessageFor(u => u.Username)<br />
+			@Html.LabelFor(u => u.Country)<br />
+			@Html.TextBoxFor(u => u.Country, new { @class = "form-control form-control-lg" })<br />
+			<div class="text-center">
+				<button type="submit" class="btn btn-dark">Sign In</button>
+			</div>
+		</div>
+		}
+	</div>
+</div>

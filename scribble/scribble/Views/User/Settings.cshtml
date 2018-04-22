@@ -1,0 +1,26 @@
+﻿@model scribble.ViewModels.UserUpdateModel
+@{
+    ViewBag.Title = "Settings";
+}
+
+<h2 class="text-center">Settings</h2>
+
+<div class="row">
+	<div class="col-lg-4 offset-lg-4 p-lg-5">
+		@using (Html.BeginForm("Settings", "User", FormMethod.Post))
+		{
+		<div class="form-group">
+			@Html.LabelFor(u => u.OldPassword)<br />
+			@Html.PasswordFor(u => u.OldPassword, new { @class = "form-control form-control-lg" })<br />
+			@Html.LabelFor(u => u.NewPassword)<br />
+			@Html.PasswordFor(u => u.NewPassword, new { @class = "form-control form-control-lg" })<br />
+			@Html.LabelFor(u => u.ConfirmPassword)<br />
+			@Html.PasswordFor(u => u.ConfirmPassword, new { @class = "form-control form-control-lg" })<br />
+			<div class="text-center">
+			<button type="submit" class="btn btn-dark">Update</button>
+			</div>
+		</div>
+		}
+
+	</div>
+</div>

@@ -1,0 +1,46 @@
+﻿@{
+	ViewBag.Title = "_Header";
+}
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+	<a class="navbar-brand" href="@Url.Action("Index", "Home")">scribble</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarColor03">
+		<ul class="navbar-nav mr-auto">
+			@if (User.Identity.IsAuthenticated)
+			{
+				<li class="nav-item">
+					<a class="nav-link" href="@Url.Action("Draw", "User")">Draw</a>
+				</li>
+			}
+			<li class="nav-item">
+				<a class="nav-link" href="@Url.Action("About", "Home")">About</a>
+			</li>
+		</ul>
+		<ul class="nav navbar-nav float-right">
+			@if (!User.Identity.IsAuthenticated)
+			{
+				<li class="nav-item float-right">
+					<a class="nav-link" href="@Url.Action("Register", "Auth")">Sign Up</a>
+				</li>
+				<li class="nav-item float-right">
+					<a class="nav-link" href="@Url.Action("Login", "Auth")">Sign In</a>
+				</li>
+			}
+			else {
+				<li class="nav-item dropdown dropleft">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name</a>
+					<div class="dropdown-menu" x-placement="bottom-start" style="position: page; transform: translate3d(0px, 38px, 0px); top: 0px; right: 0.2em; will-change: transform;">
+						<a class="dropdown-item" href="@Url.Action("Index", "User")">Profile</a>
+						<a class="dropdown-item" href="@Url.Action("Settings", "User")">Settings</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="@Url.Action("LogOut", "Auth")">Log Out</a>
+					</div>
+				</li>
+			}
+		</ul>
+	</div>
+</nav>
