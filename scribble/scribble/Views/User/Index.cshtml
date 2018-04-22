@@ -16,7 +16,7 @@
 		{
 			<div class="col-md-4">
 				<div class="btn btn-dark thumbnail border border-secondary btn-block">
-					<a href="@Url.Action("DeleteDrawing", "User", new { url = drawing.DrawingBytes })" onclick="confirm('Are you sure?')" class="btn-sm btn btn-danger float-right rounded">x</a><hr class="invisible" />
+					<a href="@Url.Action("DeleteDrawing", "User", new { url = drawing.DrawingBytes })" onclick="return confirm('Are you sure?')" class="btn-sm btn btn-danger float-right rounded">x</a><hr class="invisible" />
 					<img class="rounded bg-white img-fluid btn-sm" src="@drawing.DrawingBytes"
 						 onclick="pokajiBolishuiuKartinku(@JsonConvert.SerializeObject(drawing))">
 					<hr />
