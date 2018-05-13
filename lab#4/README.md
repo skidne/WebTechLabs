@@ -21,7 +21,7 @@
 
 ### Main Requirements:
 
-– The basic authentication system has been implemented - the User can draw and post drawings to the gallery, also they can delete their own drawings if they want to. Quests can only see the gallery, and sign up or sign in, nothing else. 
+- The basic authentication system has been implemented - the User can draw and post drawings to the gallery, also they can delete their own drawings if they want to. Quests can only see the gallery, and sign up or sign in, nothing else. 
 
 
 # Conclusions
